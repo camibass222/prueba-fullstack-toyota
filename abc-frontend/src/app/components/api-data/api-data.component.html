@@ -1,0 +1,103 @@
+<div class="section-header">
+  <p><strong>Integración con API Externa</strong></p>
+  <p>Datos de <a href="https://jsonplaceholder.typicode.com" target="_blank">JSONPlaceholder</a></p>
+</div>
+
+<!-- Estado de Microservicios -->
+<div class="microservices-section">
+  <p><strong>Estado de Microservicios</strong></p>
+  <div class="status-cards">
+    <div class="status-card" [class.online]="microservicesStatus.usuarios.status === 'online'"
+         [class.offline]="microservicesStatus.usuarios.status === 'offline'">
+      <span class="service-name">Usuarios</span>
+      <span class="service-status">
+        {{ microservicesStatus.usuarios.status === 'online' ? 'Online' : 
+           microservicesStatus.usuarios.status === 'offline' ? 'Offline' : 'Verificando...' }}
+      </span>
+    </div>
+    <div class="status-card" [class.online]="microservicesStatus.pedidos.status === 'online'"
+         [class.offline]="microservicesStatus.pedidos.status === 'offline'">
+      <span class="service-name">Pedidos</span>
+      <span class="service-status">
+        {{ microservicesStatus.pedidos.status === 'online' ? 'Online' : 
+           microservicesStatus.pedidos.status === 'offline' ? 'Offline' : 'Verificando...' }}
+      </span>
+    </div>
+    <div class="status-card" [class.online]="microservicesStatus.pagos.status === 'online'"
+         [class.offline]="microservicesStatus.pagos.status === 'offline'">
+      <span class="service-name">Pagos</span>
+      <span class="service-status">
+        {{ microservicesStatus.pagos.status === 'online' ? 'Online' : 
+           microservicesStatus.pagos.status === 'offline' ? 'Offline' : 'Verificando...' }}
+      </span>
+    </div>
+  </div>
+</div>
+
+<!-- Tabs -->
+<div class="tabs">
+  <button [class.active]="activeTab === 'posts'" (click)="setActiveTab('posts')">
+    Posts
+  </button>
+  <button [class.active]="activeTab === 'users'" (click)="setActiveTab('users')">
+    Usuarios API
+  </button>
+  <button [class.active]="activeTab === 'todos'" (click)="setActiveTab('todos')">
+    Todos
+  </button>
+</div>
+
+<!-- Loading -->
+<div class="loading" *ngIf="isLoading">
+  <div class="spinner"></div>
+  <p>Cargando datos...</p>
+</div>
+
+<!-- Error -->
+<div class="error-message" *ngIf="error">
+  {{ error }}
+</div>
+
+<!-- Content -->
+<div class="tab-content" *ngIf="!isLoading && !error">
+  <!-- Posts Tab -->
+  <div *ngIf="activeTab === 'posts'" class="data-grid">
+    <div class="card" *ngFor="let post of posts">
+      <h4>{{ post.title }}</h4>
+      <p>{{ post.body }}</p>
+      <span class="card-meta">Post #{{ post.id }}</span>
+    </div>
+  </div>
+
+  <!-- Users Tab -->
+  <div *ngIf="activeTab === 'users'" class="data-table-container">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Email</th>
+          <th>Ciudad</th>
+          <th>Empresa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.id }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.address?.city }}</td>
+          <td>{{ user.company?.name }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Todos Tab -->
+  <div *ngIf="activeTab === 'todos'" class="todos-list">
+    <div class="todo-item" *ngFor="let todo of todos" [class.completed]="todo.completed">
+      <span class="todo-status">{{ todo.completed ? 'OK' : 'Em' }}</span>
+      <span class="todo-title">{{ todo.title }}</span>
+    </div>
+  </div>
+</div>

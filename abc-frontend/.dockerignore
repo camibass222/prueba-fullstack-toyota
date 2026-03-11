@@ -1,0 +1,33 @@
+# Dependencias
+node_modules
+npm-debug.log
+
+# Archivos de construcción
+dist
+.angular
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Git
+.git
+.gitignore
+
+# Documentación
+README.md
+*.md
+
+# Tests
+coverage
+e2e
+
+# Archivos temporales
+*.tmp
+*.temp

@@ -1,0 +1,54 @@
+<div class="section-header">
+  <p><strong>Gestión de Pagos</strong></p>
+  <p>Historial y administración de transacciones</p>
+</div>
+
+<div class="stats-cards">
+  <div class="stat-card">
+    <div class="stat-info">
+      <span class="stat-value">${{ totalAmount.toFixed(2) }}</span>
+      <span class="stat-label">Total Recaudado</span>
+    </div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-info">
+      <span class="stat-value">{{ completedCount }}</span>
+      <span class="stat-label">Completados</span>
+    </div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-info">
+      <span class="stat-value">{{ pendingCount }}</span>
+      <span class="stat-label">Pendientes</span>
+    </div>
+  </div>
+</div>
+
+<div class="data-table-container">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>ID Transacción</th>
+        <th>Pedido</th>
+        <th>Monto</th>
+        <th>Método</th>
+        <th>Estado</th>
+        <th>Fecha</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let payment of payments">
+        <td><code class="transaction-id">{{ payment.transactionId }}</code></td>
+        <td>#{{ payment.orderId }}</td>
+        <td class="amount">${{ payment.amount.toFixed(2) }}</td>
+        <td>{{ getMethodLabel(payment.method) }}</td>
+        <td>
+          <span class="status-badge {{ payment.status }}">
+            {{ getStatusLabel(payment.status) }}
+          </span>
+        </td>
+        <td>{{ payment.createdAt | date:'short' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

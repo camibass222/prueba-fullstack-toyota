@@ -1,0 +1,59 @@
+<div class="section-header">
+  <p><strong>Gestión de Pedidos</strong></p>
+  <p>Administración y seguimiento de pedidos</p>
+</div>
+
+<div class="stats-cards">
+  <div class="stat-card">
+    <div class="stat-info">
+      <span class="stat-value">{{ orders.length }}</span>
+      <span class="stat-label">Total Pedidos</span>
+    </div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-info">
+      <span class="stat-value">{{ pendingCount }}</span>
+      <span class="stat-label">Pendientes</span>
+    </div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-info">
+      <span class="stat-value">{{ shippedCount }}</span>
+      <span class="stat-label">Enviados</span>
+    </div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-info">
+      <span class="stat-value">{{ deliveredCount }}</span>
+      <span class="stat-label">Entregados</span>
+    </div>
+  </div>
+</div>
+
+<div class="orders-grid">
+  <div class="order-card" *ngFor="let order of orders">
+    <div class="order-header">
+      <span class="order-id">#{{ order.id }}</span>
+      <span class="order-status {{ order.status }}">
+        {{ getStatusLabel(order.status) }}
+      </span>
+    </div>
+    <div class="order-body">
+      <div class="order-items">
+        <div class="item" *ngFor="let item of order.items">
+          <span>{{ item.name }} x{{ item.quantity }}</span>
+          <span>${{ item.price }}</span>
+        </div>
+      </div>
+      <div class="order-total">
+        <p><strong>Total: ${{ order.total.toFixed(2) }}</strong></p>
+      </div>
+    </div>
+    <div class="order-footer">
+      <span class="order-date">{{ order.createdAt | date:'short' }}</span>
+      <br>
+      <button class="btn-details">Ver detalles</button>
+      <hr>
+    </div>
+  </div>
+</div>

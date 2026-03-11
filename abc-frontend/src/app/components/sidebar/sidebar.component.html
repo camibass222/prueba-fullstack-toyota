@@ -1,0 +1,40 @@
+<aside class="sidebar" [class.collapsed]="isCollapsed">
+  <div class="sidebar-header">
+    <h2 *ngIf="!isCollapsed">ABC</h2>
+    <button class="toggle-btn" (click)="toggleSidebar()">
+      <i class="bi" [ngClass]="isCollapsed ? 'bi-chevron-right' : 'bi-chevron-left'"></i>
+    </button>
+  </div>
+
+  <div class="user-info" *ngIf="currentUser && !isCollapsed">
+    <div class="avatar">{{ currentUser.username[0].toUpperCase() }}</div>
+    <div class="user-details">
+      <span class="username">{{ currentUser.username }}</span>
+      <span class="role" [class.admin]="currentUser.role === 'admin'">
+        {{ currentUser.role === 'admin' ? 'Administrador' : 'Usuario' }}
+      </span>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+    <ul>
+      <li *ngFor="let item of filteredMenuItems">
+        <a [routerLink]="item.route" 
+           routerLinkActive="active"
+           [title]="item.label">
+          <span class="icon">
+            <i class="bi" [ngClass]="item.icon"></i>
+          </span>
+          <span class="label" *ngIf="!isCollapsed">{{ item.label }}</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="sidebar-footer">
+    <button class="logout-btn" (click)="logout()" [title]="'Cerrar Sesión'">
+      <span class="icon"><i class="bi bi-box-arrow-right"></i></span>
+      <span class="label" *ngIf="!isCollapsed">Cerrar Sesión</span>
+    </button>
+  </div>
+</aside>

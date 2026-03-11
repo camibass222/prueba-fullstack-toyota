@@ -1,0 +1,14 @@
+<div class="dashboard-container">
+  <app-sidebar (menuToggle)="onMenuToggle($event)"></app-sidebar>
+  
+  <main class="main-content" [class.expanded]="sidebarCollapsed">
+    <header class="top-bar">
+      <p>Plataforma de gestión de pedidos</p>
+      <app-theme-toggle></app-theme-toggle>
+    </header>
+    
+    <div class="content-area">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>

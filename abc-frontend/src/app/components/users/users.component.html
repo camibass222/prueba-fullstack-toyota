@@ -1,0 +1,59 @@
+<div class="section-header">
+  <p><strong>Gestión de Usuarios</strong></p>
+  <p>Administración de usuarios del sistema</p>
+</div>
+
+<div class="stats-cards">
+  <div class="stat-card">
+    <div class="stat-info">
+      <span class="stat-value">{{ users.length }}</span>
+      <span class="stat-label">Total Usuarios</span>
+    </div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-info">
+      <span class="stat-value">{{ adminCount }}</span>
+      <span class="stat-label">Administradores</span>
+    </div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-info">
+      <span class="stat-value">{{ userCount }}</span>
+      <span class="stat-label">Usuarios Estándar</span>
+    </div>
+  </div>
+</div>
+
+<div class="data-table-container">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Usuario</th>
+        <th>Email</th>
+        <th>Rol</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.id }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+          <span class="badge" [class.admin]="user.role === 'admin'">
+            {{ user.role }}
+          </span>
+        </td>
+        <td>
+          <button class="btn-action edit" title="Editar">
+            <i class="bi bi-pencil"></i>
+          </button>
+          <button class="btn-action delete" title="Eliminar">
+            <i class="bi bi-trash"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

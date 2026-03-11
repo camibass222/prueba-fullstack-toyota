@@ -1,0 +1,6 @@
+<button 
+  class="theme-toggle" 
+  (click)="toggleTheme()" 
+  [title]="isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'">
+  <i class="bi" [ngClass]="isDark ? 'bi-sun-fill' : 'bi-moon-fill'"></i>
+</button>

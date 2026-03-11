@@ -1,0 +1,81 @@
+services:
+  # Base de datos MongoDB
+  mongodb:
+    image: mongo:7.0
+    container_name: abc-mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+      - ./mongo-init:/docker-entrypoint-initdb.d
+    environment:
+      - MONGO_INITDB_DATABASE=abc_platform
+    networks:
+      - abc-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Microservicio de Usuarios
+  usuarios:
+    build:
+      context: ./abc-backend/usuarios
+      dockerfile: Dockerfile
+    container_name: abc-usuarios
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
+      - MONGODB_URI=mongodb://mongodb:27017/usuarios
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    networks:
+      - abc-network
+    restart: unless-stopped
+
+  # Microservicio de Pedidos
+  pedidos:
+    build:
+      context: ./abc-backend/pedidos
+      dockerfile: Dockerfile
+    container_name: abc-pedidos
+    ports:
+      - "3002:3002"
+    environment:
+      - PORT=3002
+      - MONGODB_URI=mongodb://mongodb:27017/pedidos
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    networks:
+      - abc-network
+    restart: unless-stopped
+
+  # Microservicio de Pagos
+  pagos:
+    build:
+      context: ./abc-backend/pagos
+      dockerfile: Dockerfile
+    container_name: abc-pagos
+    ports:
+      - "3003:3003"
+    environment:
+      - PORT=3003
+      - MONGODB_URI=mongodb://mongodb:27017/pagos
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    networks:
+      - abc-network
+    restart: unless-stopped
+
+networks:
+  abc-network:
+    driver: bridge
+
+volumes:
+  mongodb_data:

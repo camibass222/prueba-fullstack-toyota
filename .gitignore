@@ -1,0 +1,89 @@
+# ================================
+# Dependencias
+# ================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ================================
+# Angular
+# ================================
+abc-frontend/dist/
+abc-frontend/.angular/
+abc-frontend/.sass-cache/
+abc-frontend/connect.lock
+abc-frontend/coverage/
+abc-frontend/libpeerconnection.log
+abc-frontend/testem.log
+abc-frontend/typings/
+
+# ================================
+# IDEs y Editores
+# ================================
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+
+# ================================
+# Sistema Operativo
+# ================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ================================
+# Docker
+# ================================
+# No ignorar docker-compose.yml ni Dockerfiles
+
+# ================================
+# Logs
+# ================================
+logs/
+*.log
+
+# ================================
+# Variables de entorno
+# ================================
+.env
+.env.local
+.env.*.local
+*.env
+
+# ================================
+# MongoDB Data (local)
+# ================================
+data/
+mongodb_data/
+
+# ================================
+# Temporales
+# ================================
+tmp/
+temp/
+*.tmp
+*.temp
+
+# ================================
+# Coverage y Tests
+# ================================
+coverage/
+.nyc_output/
+
+# ================================
+# Build
+# ================================
+build/
+dist/
