@@ -16,28 +16,7 @@ Este proyecto es un **MVP técnico** que demuestra la transición de una platafo
 **Base de datos** - MongoDB en contenedor
 **Containerización** - Docker y Docker Compose
 
-## Diagrama de Arquitectura
-
-                     ┌─────────────────┐
-                     │   CLIENTE WEB   │
-                     │   (Angular)     │
-                     │   Puerto: 4200  │
-                     └────────┬────────┘
-                              │
-      ┌───────────────────────┼───────────────────────┐
-      ▼                       ▼                       ▼
-┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐
-│ USUARIOS        │ │ PEDIDOS         │ │ PAGOS           │
-│ Puerto: 3001    │ │ Puerto: 3002    │ │ Puerto: 3003    │
-└────────┬────────┘ └────────┬────────┘ └────────┬────────┘
-         │                   │                   │
-         └───────────────────┼───────────────────┘
-                             ▼
-                   ┌─────────────────────┐
-                   │ MongoDB             │
-                   │ Puerto: 27017       │
-                   └─────────────────────┘
-
+<img width="608" height="634" alt="Image" src="https://github.com/user-attachments/assets/aee016db-af2a-4482-b5dd-6204b520d665" />
 
 ## Justificación de Decisiones Técnicas
 
