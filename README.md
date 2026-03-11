@@ -18,6 +18,40 @@ Este proyecto es un **MVP técnico** que demuestra la transición de una platafo
 
 <img width="608" height="634" alt="Image" src="https://github.com/user-attachments/assets/aee016db-af2a-4482-b5dd-6204b520d665" />
 
+## Diagrama de arquitectura
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                          ARQUITECTURA                                   │
+│                         Microservicios                                  │
+└─────────────────────────────────────────────────────────────────────────┘
+
+                              ┌─────────────┐
+                              │   Usuario   │
+                              └──────┬──────┘
+                                     │
+                              ┌──────▼──────┐        ┌───────────────┐
+                              │   FRONTEND  │        │  API          │
+                              │   Angular   │◄──────►│ Externa       │
+                              │  Port: 4200 │        │JSONPlaceholder│
+                              └──────┬──────┘        └───────────────┘
+                                     │
+          ┌──────────────────────────┼──────────────────────────┐
+          │                                                     │
+          │            Docker Network (abc-network)             │
+          │  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐  │
+          │  │ USUARIOS    │  │ PEDIDOS     │  │ PAGOS       │  │
+          │  │ Node.js     │  │ Node.js     │  │ Node.js     │  │
+          │  │ Port: 3001  │  │ Port: 3002  │  │ Port: 3003  │  │
+          │  └──────┬──────┘  └──────┬──────┘  └──────┬──────┘  │
+          │         │                │                │         │
+          │         └────────────────┼────────────────┘         │
+          │                          │                          │
+          │                   ┌──────▼──────┐                   │
+          │                   │ MongoDB     │                   │
+          │                   │ Port: 27017 │                   │
+          │                   └─────────────┘                   │
+          └─────────────────────────────────────────────────────┘
+
 ## Justificación de Decisiones Técnicas
 
 ## Frontend
@@ -84,6 +118,8 @@ Todos
 Comentarios
 
 ## Estructura del proyecto
+
+<img width="246" height="621" alt="Image" src="https://github.com/user-attachments/assets/8862991f-d4be-4240-8f68-27b56260e33b" />
 
 prueba-fullstack-toyota/
 ├── abc-frontend/
@@ -159,6 +195,54 @@ docker-compose down -v
 
 Juan Camilo Céspedes Henao
 Desarrollado como MVP técnico para Desarrollaror FullStack Toyota.
+
+## Capturas de pantalla del proyecto
+
+<img width="1365" height="767" alt="Image" src="https://github.com/user-attachments/assets/4ce39162-c142-4ae8-ac47-2ceaaf5663e2" />
+
+<img width="1365" height="767" alt="Image" src="https://github.com/user-attachments/assets/ab734a9a-1f9f-4676-ba8d-9da18bfba32a" />
+
+<img width="1365" height="767" alt="Image" src="https://github.com/user-attachments/assets/8fdb94f5-7e28-432e-84f6-f9cc6b6119f4" />
+
+<img width="1365" height="767" alt="Image" src="https://github.com/user-attachments/assets/182d69ae-e18e-4d90-a817-c3bf85eb97ee" />
+
+<img width="1365" height="767" alt="Image" src="https://github.com/user-attachments/assets/17016564-97ae-4ad7-be5f-bdbecd099ea8" />
+
+<img width="1367" height="767" alt="Image" src="https://github.com/user-attachments/assets/eca55664-3c85-47bc-bf39-dcba28a25e65" />
+
+<img width="1365" height="767" alt="Image" src="https://github.com/user-attachments/assets/6f8fdda5-8c6a-4fd6-a05c-4942c6a21413" />
+
+<img width="1365" height="767" alt="Image" src="https://github.com/user-attachments/assets/bfdc0213-41d3-4abe-8482-f68d03509726" />
+
+<img width="1365" height="767" alt="Image" src="https://github.com/user-attachments/assets/4cc1eddd-6caa-4052-b4f9-81a57f4a4678" />
+
+<img width="1365" height="767" alt="Image" src="https://github.com/user-attachments/assets/b3f1d0ae-4b56-4641-ae5d-3575efe375a1" />
+
+<img width="1365" height="767" alt="Image" src="https://github.com/user-attachments/assets/00d11c8a-a54f-490e-9426-072bf4eeb74d" />
+
+<img width="1365" height="767" alt="Image" src="https://github.com/user-attachments/assets/64d83280-b473-44d6-8e34-34a577008a87" />
+
+<img width="1365" height="767" alt="Image" src="https://github.com/user-attachments/assets/2e5162bf-65ea-4a2b-bb9c-e9ed6e9436a5" />
+
+<img width="1365" height="767" alt="Image" src="https://github.com/user-attachments/assets/214499aa-28b1-472d-8ccd-838503f37d7c" />
+
+<img width="1365" height="767" alt="Image" src="https://github.com/user-attachments/assets/5a4f1959-4abd-4490-902a-1be5b75783a3" />
+
+<img width="1365" height="767" alt="Image" src="https://github.com/user-attachments/assets/9bc7a012-fafe-449b-b57e-79d65e799fa4" />
+
+<img width="1365" height="767" alt="Image" src="https://github.com/user-attachments/assets/848024f3-58c2-4d6b-ae9e-cc05c5f24f6c" />
+
+<img width="1365" height="767" alt="Image" src="https://github.com/user-attachments/assets/b0b8d79f-8e3e-41f0-93ea-9d653002b9c8" />
+
+<img width="1365" height="767" alt="Image" src="https://github.com/user-attachments/assets/355d58b9-9357-41c0-8b02-febb03393612" />
+
+<img width="1365" height="767" alt="Image" src="https://github.com/user-attachments/assets/4afa22a1-94a8-4d0f-850e-05b41750ee10" />
+
+<img width="1365" height="767" alt="Image" src="https://github.com/user-attachments/assets/8565b325-e90b-4df9-9070-5ca4746e70bb" />
+
+<img width="1365" height="767" alt="Image" src="https://github.com/user-attachments/assets/4a08f5fe-a681-4ef9-bc21-1da5031533e6" />
+
+<img width="1365" height="767" alt="Image" src="https://github.com/user-attachments/assets/9bd78b2f-3e0f-4994-a612-729dd3d3408e" />
 
 ## Licencia
 
